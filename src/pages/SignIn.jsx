@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BASE_URL } from '../api/const';
 import { useNavigate } from 'react-router-dom';
 
@@ -36,6 +36,14 @@ const SignIn = () => {
       throw new Error(data.Error || '로그인에 문제가 발생했습니다');
     }
   };
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+
+    if (accessToken) {
+      navigate('/todo');
+    }
+  });
 
   return (
     <>

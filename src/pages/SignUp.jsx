@@ -39,6 +39,12 @@ const SignUp = () => {
   };
 
   useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+
+    if (accessToken) {
+      navigate('/todo');
+    }
+
     if (!email || !email.includes('@')) {
       console.log('유효하지 않은 이메일입니다.');
       setValidCheck(false);
