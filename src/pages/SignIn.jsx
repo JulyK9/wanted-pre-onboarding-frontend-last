@@ -55,7 +55,7 @@ const SignIn = () => {
       return;
     }
     setValidCheck(true);
-  });
+  }, [email, password, navigate]);
 
   return (
     <>

@@ -55,7 +55,7 @@ const SignUp = () => {
       return;
     }
     setValidCheck(true);
-  }, [email, password]);
+  }, [email, password, navigate]);
 
   return (
     <>
