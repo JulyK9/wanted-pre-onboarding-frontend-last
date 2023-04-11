@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [validCheck, setValidCheck] = useState(false);
 
   const navigate = useNavigate();
 
@@ -43,6 +44,17 @@ const SignIn = () => {
     if (accessToken) {
       navigate('/todo');
     }
+
+    if (!email || email.includes('@')) {
+      console.log('유효하지 않은 이메일입니다.');
+      setValidCheck(false);
+    }
+    if (!password || password.length < 8) {
+      console.log('비밀번호는 8자 이상이어야 합니다.');
+      setValidCheck(false);
+      return;
+    }
+    setValidCheck(true);
   });
 
   return (
@@ -65,7 +77,9 @@ const SignIn = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button data-testid="signin-button">로그인</button>
+        <button data-testid="signin-button" disabled={!validCheck}>
+          로그인
+        </button>
       </form>
     </>
   );
