@@ -34,7 +34,7 @@ const SignIn = () => {
 
     if (!response.ok) {
       const data = await response.json();
-      throw new Error(data.Error || '로그인에 문제가 발생했습니다');
+      throw new Error(data.message || '로그인에 문제가 발생했습니다');
     }
   };
 
