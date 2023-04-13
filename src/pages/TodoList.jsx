@@ -145,6 +145,30 @@ const TodoList = () => {
     }
   };
 
+  const handleDelete = async (todoItem) => {
+    const accessToken = localStorage.getItem('accessToken');
+
+    const response = await fetch(`${BASE_URL}/todos/${todoItem.id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    if (response.ok) {
+      const updatedTodoList = todos.filter((todo) => {
+        return todo.id !== todoItem.id;
+      });
+      setTodos(updatedTodoList);
+    }
+
+    if (!response.ok) {
+      throw new Error(
+        response.message || '정상적으로 삭제를 수행하지 못했습니다.'
+      );
+    }
+  };
+
   return (
     <>
       <form onSubmit={todoSubmitHandler}>
@@ -196,7 +220,12 @@ const TodoList = () => {
                   >
                     수정
                   </button>
-                  <button data-testid="delete-button">삭제</button>
+                  <button
+                    data-testid="delete-button"
+                    onClick={() => handleDelete(todo)}
+                  >
+                    삭제
+                  </button>
                 </div>
               )}
             </li>
