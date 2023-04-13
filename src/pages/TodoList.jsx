@@ -179,11 +179,12 @@ const TodoList = () => {
       <form onSubmit={todoSubmitHandler}>
         <h3>새로운 Todo를 추가해보세요</h3>
         <input
+          data-testid="new-todo-input"
           type="text"
           value={todoText}
           onChange={(e) => setTodoText(e.target.value)}
         />
-        <button>추가</button>
+        <button data-testid="new-todo-add-button">추가</button>
       </form>
       <div>
         <h3>해야할 일 목록이에요</h3>
@@ -200,7 +201,7 @@ const TodoList = () => {
                 {editItem && editItem.id === todo.id ? (
                   <div>
                     <input
-                      data-testid="new-todo-input"
+                      data-testid="modify-input"
                       type="text"
                       value={editItem.todo}
                       onChange={(e) =>
@@ -214,8 +215,18 @@ const TodoList = () => {
               </label>
               {editItem && editItem.id === todo.id ? (
                 <>
-                  <button onClick={() => handleUpdate(todo)}>제출</button>
-                  <button onClick={() => setEditItem(false)}>취소</button>
+                  <button
+                    data-testid="submit-button"
+                    onClick={() => handleUpdate(todo)}
+                  >
+                    제출
+                  </button>
+                  <button
+                    data-testid="cancel-button"
+                    onClick={() => setEditItem(false)}
+                  >
+                    취소
+                  </button>
                 </>
               ) : (
                 <div>
