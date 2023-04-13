@@ -43,6 +43,11 @@ const TodoList = () => {
   const todoSubmitHandler = async (e) => {
     e.preventDefault();
 
+    if (todoText === '') {
+      alert('할 일을 작성해주세요');
+      return;
+    }
+
     const accessToken = localStorage.getItem('accessToken');
 
     const reqBody = {
