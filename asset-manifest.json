@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "https://JulyK9.github.io/wanted-pre-onboarding-frontend/static/css/main.e6c13ad2.css",
-    "main.js": "https://JulyK9.github.io/wanted-pre-onboarding-frontend/static/js/main.c3685466.js",
-    "index.html": "https://JulyK9.github.io/wanted-pre-onboarding-frontend/index.html",
-    "main.e6c13ad2.css.map": "https://JulyK9.github.io/wanted-pre-onboarding-frontend/static/css/main.e6c13ad2.css.map",
-    "main.c3685466.js.map": "https://JulyK9.github.io/wanted-pre-onboarding-frontend/static/js/main.c3685466.js.map"
+    "main.css": "/wanted-pre-onboarding-frontend/static/css/main.e6c13ad2.css",
+    "main.js": "/wanted-pre-onboarding-frontend/static/js/main.72751164.js",
+    "index.html": "/wanted-pre-onboarding-frontend/index.html",
+    "main.e6c13ad2.css.map": "/wanted-pre-onboarding-frontend/static/css/main.e6c13ad2.css.map",
+    "main.72751164.js.map": "/wanted-pre-onboarding-frontend/static/js/main.72751164.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.c3685466.js"
+    "static/js/main.72751164.js"
   ]
 }
