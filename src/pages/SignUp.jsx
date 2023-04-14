@@ -73,7 +73,7 @@ const SignUp = () => {
     });
 
     if (response.ok) {
-      alert('로그인 성공. 회원가입 페이지로 이동합니다.');
+      alert('회원가입 성공. 로그인 페이지로 이동합니다.');
       navigate('/signin');
     }
 
