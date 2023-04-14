@@ -2,6 +2,54 @@ import { useEffect, useState } from 'react';
 import { BASE_URL } from '../api/const';
 import { useNavigate } from 'react-router-dom';
 
+import styled from 'styled-components';
+
+const MainContainer = styled.div`
+  /* background-color: lightgray; */
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const FormContainer = styled.form`
+  width: 40%;
+  min-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  gap: 1rem;
+
+  input {
+    padding: 0.8rem 1rem;
+    border-radius: 3px;
+    font-size: 1rem;
+
+    &:focus {
+      border: 1px solid #5a9bd1;
+    }
+  }
+
+  button {
+    width: 100%;
+    height: 2.8rem;
+    border-radius: 3px;
+    background-color: #5a9bd1;
+    color: white;
+    font-size: 1.1rem;
+
+    &:hover {
+      background-color: steelblue;
+    }
+
+    &:disabled {
+      background-color: lightsteelblue;
+    }
+  }
+`;
+
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -58,9 +106,9 @@ const SignIn = () => {
   }, [email, password, navigate]);
 
   return (
-    <>
-      <h2>로그인 페이지</h2>
-      <form onSubmit={loginHandler}>
+    <MainContainer>
+      <h2>로그인</h2>
+      <FormContainer onSubmit={loginHandler}>
         <input
           data-testid="email-input"
           type="email"
@@ -80,8 +128,8 @@ const SignIn = () => {
         <button data-testid="signin-button" disabled={!validCheck}>
           로그인
         </button>
-      </form>
-    </>
+      </FormContainer>
+    </MainContainer>
   );
 };
 

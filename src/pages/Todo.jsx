@@ -2,7 +2,22 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../api/const';
 
-const TodoList = () => {
+import AddTodo from '../components/AddTodo';
+import TodoList from '../components/TodoList';
+
+import styled from 'styled-components';
+
+const MainTodoContainer = styled.div`
+  width: 80%;
+  min-width: 30rem;
+  margin-top: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
+
+const Todo = () => {
   const [todoText, setTodoText] = useState('');
   const [todos, setTodos] = useState([]);
   const [editItem, setEditItem] = useState(null);
@@ -175,81 +190,22 @@ const TodoList = () => {
   };
 
   return (
-    <>
-      <form onSubmit={todoSubmitHandler}>
-        <h3>새로운 Todo를 추가해보세요</h3>
-        <input
-          data-testid="new-todo-input"
-          type="text"
-          value={todoText}
-          onChange={(e) => setTodoText(e.target.value)}
-        />
-        <button data-testid="new-todo-add-button">추가</button>
-      </form>
-      <div>
-        <h3>해야할 일 목록이에요</h3>
-        <ul>
-          {todos?.map((todo) => (
-            <li key={todo.id}>
-              <label id={todo.id}>
-                <input
-                  type="checkbox"
-                  htmlFor={todo.id}
-                  checked={todo.isCompleted}
-                  onChange={() => handleCompleted(todo)}
-                />
-                {editItem && editItem.id === todo.id ? (
-                  <div>
-                    <input
-                      data-testid="modify-input"
-                      type="text"
-                      value={editItem.todo}
-                      onChange={(e) =>
-                        setEditItem({ ...editItem, todo: e.target.value })
-                      }
-                    />
-                  </div>
-                ) : (
-                  <span>{todo.todo}</span>
-                )}
-              </label>
-              {editItem && editItem.id === todo.id ? (
-                <>
-                  <button
-                    data-testid="submit-button"
-                    onClick={() => handleUpdate(todo)}
-                  >
-                    제출
-                  </button>
-                  <button
-                    data-testid="cancel-button"
-                    onClick={() => setEditItem(false)}
-                  >
-                    취소
-                  </button>
-                </>
-              ) : (
-                <div>
-                  <button
-                    data-testid="modify-button"
-                    onClick={() => setEditItem(todo)}
-                  >
-                    수정
-                  </button>
-                  <button
-                    data-testid="delete-button"
-                    onClick={() => handleDelete(todo)}
-                  >
-                    삭제
-                  </button>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+    <MainTodoContainer>
+      <AddTodo
+        todoText={todoText}
+        setTodoText={setTodoText}
+        todoSubmitHandler={todoSubmitHandler}
+      />
+      <TodoList
+        todos={todos}
+        handleCompleted={handleCompleted}
+        editItem={editItem}
+        setEditItem={setEditItem}
+        handleUpdate={handleUpdate}
+        handleDelete={handleDelete}
+      />
+    </MainTodoContainer>
   );
 };
 
-export default TodoList;
+export default Todo;
