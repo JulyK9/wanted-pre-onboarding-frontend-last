@@ -21,3 +21,23 @@ npm start
 배포링크 :
 
 `https://julyk9.github.io/wanted-pre-onboarding-frontend/`
+
+주요기능 시연 :
+
+<details><summary>회원가입</summary>
+
+![회원가입](https://user-images.githubusercontent.com/97942837/232012328-83dcf7e9-be0b-44ea-b11d-5da65183eb49.gif)
+
+</details>
+
+<details><summary>로그인</summary>
+
+![로그인](https://user-images.githubusercontent.com/97942837/232012457-bbfe5082-00df-4b89-8438-6d0b3ef7b771.gif)
+
+</details>
+
+<details><summary>할일 추가, 수정, 삭제</summary>
+
+![할일 추가, 수정, 삭제](https://user-images.githubusercontent.com/97942837/232012477-6bfade57-f5d5-4184-b061-e3d9fec7ac43.gif)
+
+</details>
